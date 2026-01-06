@@ -8,6 +8,8 @@ import markdown2
 from dotenv import load_dotenv
 from google import genai
 from weasyprint import HTML
+from pathlib import Path
+
 
 from reportlab.platypus import SimpleDocTemplate, Paragraph
 from reportlab.lib.styles import getSampleStyleSheet
@@ -40,9 +42,16 @@ def animated_input(text,delay=0.03):
 
 def generate_pdf(markdown_text):
     file_id = uuid.uuid4().hex[:7]
+    file_name = f"response_{file_id}.pdf"
+    downloads = Path.home() / "Downloads"
+    downloads.mkdir(exist_ok=True)
+
+    file_path = downloads/file_name
 
     html = markdown2.markdown(markdown_text)
-    HTML(string=html).write_pdf(f"response_{file_id}.pdf")
+    print(file_path)
+    HTML(string=html).write_pdf(file_path)
+    return file_path
 
 
 while True:
@@ -62,9 +71,9 @@ while True:
     
     values = input("Quer um pdf da resposta ? S/N: ")
     if values.lower() == "s" or values.lower() == "sim":
-        generate_pdf(response.text)
+      animated_print(f"Path PDF: { generate_pdf(response.text)} ")
     if values.lower() == "n" or values.lower() == "nao" or values.lower() == "não":
-        print(response.text)
+        animated_print(response.text)
 
     animated_print("digite enter para sair")
 
