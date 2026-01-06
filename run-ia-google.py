@@ -5,7 +5,6 @@ import os
 
 load_dotenv()
 key = os.getenv("KEY_API")
-print(key)
 
 client = genai.Client(api_key=key)
 while True:
