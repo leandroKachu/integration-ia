@@ -74,6 +74,5 @@ while True:
       animated_print(f"Path PDF: { generate_pdf(response.text)} ")
     if values.lower() == "n" or values.lower() == "nao" or values.lower() == "não":
         animated_print(response.text)
-
     animated_print("digite enter para sair")
 
