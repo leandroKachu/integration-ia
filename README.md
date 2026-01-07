@@ -15,7 +15,8 @@ OBS: if u are using .venv
 Follow how to install and a alias to start-Deactive
 python3 -m venv .venv
 
-On "vim ~/.bashrc 
+On vim ~/.bashrc 
+
 turn-off-venv() {
 	if [ -d ".venv" ]; then
 	  deactivate
