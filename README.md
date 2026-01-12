@@ -32,3 +32,5 @@ turn-on-venv() {
     echo ".venv are not found in this dir"
   fi
 }
+
+alias start-ia='/YOUR-PATH/gemini-cli/run.sh'
